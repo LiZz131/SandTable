@@ -208,6 +208,12 @@ static void do_router_cmd() {
             reg_func_dict[i].state = (STATE_DISABLED | (reg_func_dict[i].state & STATE_LIBRARY));
         }
         print_info("Router socket is closed, exiting ..\n");
+        // _exit skips atexit, which is where gcov writes .gcda. The driver
+        // exports wraft_gcov_dump only when it is linked with --coverage.
+        // Other systems leave the symbol unresolved and this stays a no-op.
+        extern void wraft_gcov_dump(void) __attribute__((weak));
+        if (wraft_gcov_dump)
+            wraft_gcov_dump();
         // currently, we set on_exit functions, so we use exit instead of _exit() _syscall_.
         // this can lead to process corruption in race conditions (if an intercepted _syscall_ using destructed global variables)
         //exit(0);

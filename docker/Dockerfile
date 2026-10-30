@@ -5,7 +5,7 @@ LABEL version="0.1" maintainer="Ruize Tang <1466040111@qq.com>"
 # basic packages for running the project
 RUN sed -E -i.orig 's,/[a-z]+\.ubuntu\.com,/mirrors.tuna.tsinghua.edu.cn,' /etc/apt/sources.list && \
     apt-get update && \
-    apt-get install -y iproute2 iptables ssh dnsutils python3 python-is-python3 python3-pip openjdk-19-jre-headless
+    apt-get install -y iproute2 iptables ssh dnsutils python3 python-is-python3 python3-pip openjdk-17-jre-headless
 
 # password-free SSH, and keep running scripts
 RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config && \

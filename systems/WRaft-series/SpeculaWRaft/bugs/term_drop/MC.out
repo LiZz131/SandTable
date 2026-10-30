@@ -1,0 +1,866 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2026.10.28.014557 (rev: 56d37a9)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 82 and seed 3310114115283279915 with 1 worker on 20 cores with 1820MB heap and 64MB offheap memory [pid: 45765] (Linux 5.15.0-198-generic amd64, Ubuntu 21.0.12.1 64bit, MSBDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file /users/bingzhuo/Specula/case-studies/systems/willemt-raft/modules/core/runs/case-studies-willemt-raft/spec/MC_term.tla
+Parsing file /users/bingzhuo/Specula/case-studies/systems/willemt-raft/modules/core/runs/case-studies-willemt-raft/spec/MC.tla
+Parsing file /users/bingzhuo/Specula/case-studies/systems/willemt-raft/modules/core/runs/case-studies-willemt-raft/spec/base.tla
+Parsing file /tmp/tlc-14692096117256942128/TLC.tla (jar:file:/users/bingzhuo/Specula/lib/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file /tmp/tlc-14692096117256942128/Naturals.tla (jar:file:/users/bingzhuo/Specula/lib/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file /tmp/tlc-14692096117256942128/FiniteSets.tla (jar:file:/users/bingzhuo/Specula/lib/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file /tmp/tlc-14692096117256942128/Sequences.tla (jar:file:/users/bingzhuo/Specula/lib/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file /tmp/tlc-14692096117256942128/Bags.tla (jar:file:/users/bingzhuo/Specula/lib/tla2tools.jar!/tla2sany/StandardModules/Bags.tla)
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module Bags
+Semantic processing of module TLC
+Semantic processing of module base
+Semantic processing of module MC
+Semantic processing of module MC_term
+Linting of module base
+Linting of module MC
+Linting of module MC_term
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2026-10-29 21:49:24)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 1 distinct state generated at 2026-10-29 21:49:24.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2112:1 @!@!@
+Action property TermNeverDecreases is violated.
+@!@!@ENDMSG 2112 @!@!@
+@!@!@STARTMSG 2121:1 @!@!@
+The behavior up to this point is:
+@!@!@ENDMSG 2121 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+1: <Initial predicate>
+/\ messages = <<>>
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = (s1 :> <<>> @@ s2 :> <<>> @@ s3 :> <<>>)
+/\ state = (s1 :> Follower @@ s2 :> Follower @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 0,
+  request |-> 0,
+  crash |-> 0,
+  lose |-> 0,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 0 ]
+/\ step = 0
+/\ commitIndex = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> Nil @@ s3 :> Nil)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+2: <TraceNext line 21, col 8 to line 23, col 19 of module MC_term>
+/\ messages = ( [ mtype |-> RequestVoteRequest,
+    msource |-> s2,
+    mdest |-> s1,
+    mterm |-> 1,
+    mlastLogIdx |-> 0,
+    mlastLogTerm |-> 0 ] :>
+      1 @@
+  [ mtype |-> RequestVoteRequest,
+    msource |-> s2,
+    mdest |-> s3,
+    mterm |-> 1,
+    mlastLogIdx |-> 0,
+    mlastLogTerm |-> 0 ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = (s1 :> <<>> @@ s2 :> <<>> @@ s3 :> <<>>)
+/\ state = (s1 :> Follower @@ s2 :> Candidate @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 0,
+  crash |-> 0,
+  lose |-> 0,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 0 ]
+/\ step = 1
+/\ commitIndex = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 0)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> Nil)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+3: <TraceNext line 24, col 8 to line 30, col 19 of module MC_term>
+/\ messages = ( [ mtype |-> RequestVoteResponse,
+    msource |-> s3,
+    mdest |-> s2,
+    mvoteGranted |-> TRUE,
+    mterm |-> 1 ] :>
+      1 @@
+  [ mtype |-> RequestVoteRequest,
+    msource |-> s2,
+    mdest |-> s1,
+    mterm |-> 1,
+    mlastLogIdx |-> 0,
+    mlastLogTerm |-> 0 ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = (s1 :> <<>> @@ s2 :> <<>> @@ s3 :> <<>>)
+/\ state = (s1 :> Follower @@ s2 :> Candidate @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 0,
+  crash |-> 0,
+  lose |-> 0,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 0 ]
+/\ step = 2
+/\ commitIndex = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+4: <TraceNext line 31, col 8 to line 36, col 19 of module MC_term>
+/\ messages = ( [ mtype |-> RequestVoteResponse,
+    msource |-> s3,
+    mdest |-> s2,
+    mvoteGranted |-> TRUE,
+    mterm |-> 1 ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = (s1 :> <<>> @@ s2 :> <<>> @@ s3 :> <<>>)
+/\ state = (s1 :> Follower @@ s2 :> Candidate @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 0,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 0 ]
+/\ step = 3
+/\ commitIndex = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+5: <TraceNext line 37, col 8 to line 44, col 19 of module MC_term>
+/\ messages = <<>>
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = (s1 :> <<>> @@ s2 :> <<>> @@ s3 :> <<>>)
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 0,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 0 ]
+/\ step = 4
+/\ commitIndex = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+6: <TraceNext line 45, col 8 to line 47, col 19 of module MC_term>
+/\ messages = <<>>
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = (s1 :> <<>> @@ s2 :> <<[term |-> 1, value |-> v1]>> @@ s3 :> <<>>)
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 1,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 0 ]
+/\ step = 5
+/\ commitIndex = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+7: <TraceNext line 48, col 8 to line 51, col 19 of module MC_term>
+/\ messages = <<>>
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 0 ]
+/\ step = 6
+/\ commitIndex = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+8: <TraceNext line 52, col 8 to line 55, col 19 of module MC_term>
+/\ messages = ( [ mtype |-> AppendEntriesRequest,
+    msource |-> s2,
+    mdest |-> s3,
+    mterm |-> 1,
+    mprevLogIdx |-> 0,
+    mprevLogTerm |-> 0,
+    mleaderCommit |-> 0,
+    mentries |->
+        <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 1 ]
+/\ step = 7
+/\ commitIndex = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+9: <TraceNext line 56, col 8 to line 62, col 19 of module MC_term>
+/\ messages = ( [ mtype |-> AppendEntriesResponse,
+    msource |-> s3,
+    mdest |-> s2,
+    msuccess |-> TRUE,
+    mterm |-> 1,
+    mcurrentIdx |-> 2,
+    mfirstIdx |-> 1 ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 1 ]
+/\ step = 8
+/\ commitIndex = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+10: <TraceNext line 63, col 8 to line 70, col 19 of module MC_term>
+/\ messages = <<>>
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 1 ]
+/\ step = 9
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 0)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+11: <TraceNext line 71, col 8 to line 74, col 20 of module MC_term>
+/\ messages = ( [ mtype |-> AppendEntriesRequest,
+    msource |-> s2,
+    mdest |-> s3,
+    mterm |-> 1,
+    mprevLogIdx |-> 2,
+    mprevLogTerm |-> 1,
+    mleaderCommit |-> 2,
+    mentries |-> <<>> ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 2 ]
+/\ step = 10
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 0)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+12: <TraceNext line 75, col 8 to line 81, col 20 of module MC_term>
+/\ messages = ( [ mtype |-> AppendEntriesResponse,
+    msource |-> s3,
+    mdest |-> s2,
+    msuccess |-> TRUE,
+    mterm |-> 1,
+    mcurrentIdx |-> 2,
+    mfirstIdx |-> 3 ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 2 ]
+/\ step = 11
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+13: <TraceNext line 82, col 8 to line 87, col 20 of module MC_term>
+/\ messages = <<>>
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ counters = [ timeout |-> 1,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 0,
+  broadcast |-> 2 ]
+/\ step = 12
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+14: <TraceNext line 88, col 8 to line 93, col 20 of module MC_term>
+/\ messages = <<>>
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Follower)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2)
+/\ counters = [ timeout |-> 1,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 1,
+  broadcast |-> 2 ]
+/\ step = 13
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 1)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 1)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s2)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+15: <TraceNext line 94, col 8 to line 97, col 20 of module MC_term>
+/\ messages = ( [ mtype |-> RequestVoteRequest,
+    msource |-> s3,
+    mdest |-> s1,
+    mterm |-> 2,
+    mlastLogIdx |-> 2,
+    mlastLogTerm |-> 1 ] :>
+      1 @@
+  [ mtype |-> RequestVoteRequest,
+    msource |-> s3,
+    mdest |-> s2,
+    mterm |-> 2,
+    mlastLogIdx |-> 2,
+    mlastLogTerm |-> 1 ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Candidate)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2)
+/\ counters = [ timeout |-> 2,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 1,
+  duplicate |-> 0,
+  snapshot |-> 1,
+  broadcast |-> 2 ]
+/\ step = 14
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 1)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 2)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {s3})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s3)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+16: <TraceNext line 98, col 8 to line 103, col 20 of module MC_term>
+/\ messages = ( [ mtype |-> RequestVoteRequest,
+    msource |-> s3,
+    mdest |-> s1,
+    mterm |-> 2,
+    mlastLogIdx |-> 2,
+    mlastLogTerm |-> 1 ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Candidate)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2)
+/\ counters = [ timeout |-> 2,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 2,
+  duplicate |-> 0,
+  snapshot |-> 1,
+  broadcast |-> 2 ]
+/\ step = 15
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 1)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 0 @@ s2 :> 1 @@ s3 :> 2)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {s3})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s3)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+17: <TraceNext line 104, col 8 to line 111, col 20 of module MC_term>
+/\ messages = ( [ mtype |-> RequestVoteResponse,
+    msource |-> s1,
+    mdest |-> s3,
+    mvoteGranted |-> TRUE,
+    mterm |-> 2 ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Candidate)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2)
+/\ counters = [ timeout |-> 2,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 2,
+  duplicate |-> 0,
+  snapshot |-> 1,
+  broadcast |-> 2 ]
+/\ step = 16
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 1)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 2 @@ s2 :> 1 @@ s3 :> 2)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {s3})
+/\ votedFor = (s1 :> s3 @@ s2 :> s2 @@ s3 :> s3)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+18: <TraceNext line 112, col 8 to line 119, col 20 of module MC_term>
+/\ messages = <<>>
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Leader)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2)
+/\ counters = [ timeout |-> 2,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 2,
+  duplicate |-> 0,
+  snapshot |-> 1,
+  broadcast |-> 2 ]
+/\ step = 17
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 1)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 2 @@ s2 :> 1 @@ s3 :> 2)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 3 @@ s2 :> 3 @@ s3 :> 3) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {s1, s3})
+/\ votedFor = (s1 :> s3 @@ s2 :> s2 @@ s3 :> s3)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+19: <TraceNext line 120, col 8 to line 123, col 20 of module MC_term>
+/\ messages = ( [ mtype |-> AppendEntriesRequest,
+    msource |-> s3,
+    mdest |-> s1,
+    mterm |-> 2,
+    mprevLogIdx |-> 2,
+    mprevLogTerm |-> 1,
+    mleaderCommit |-> 2,
+    mentries |-> <<>> ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Leader)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2)
+/\ counters = [ timeout |-> 2,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 2,
+  duplicate |-> 0,
+  snapshot |-> 1,
+  broadcast |-> 3 ]
+/\ step = 18
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 1)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 2 @@ s2 :> 1 @@ s3 :> 2)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 3 @@ s2 :> 3 @@ s3 :> 3) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {s1, s3})
+/\ votedFor = (s1 :> s3 @@ s2 :> s2 @@ s3 :> s3)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+20: <TraceNext line 124, col 8 to line 133, col 20 of module MC_term>
+/\ messages = ( [ mtype |-> AppendEntriesResponse,
+    msource |-> s1,
+    mdest |-> s3,
+    msuccess |-> FALSE,
+    mterm |-> 2,
+    mcurrentIdx |-> 0,
+    mfirstIdx |-> 3 ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Leader)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2)
+/\ counters = [ timeout |-> 2,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 2,
+  duplicate |-> 0,
+  snapshot |-> 1,
+  broadcast |-> 3 ]
+/\ step = 19
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 1)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 2 @@ s2 :> 1 @@ s3 :> 2)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 3 @@ s2 :> 3 @@ s3 :> 3) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {s1, s3})
+/\ votedFor = (s1 :> s3 @@ s2 :> s2 @@ s3 :> s3)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+21: <TraceNext line 134, col 8 to line 141, col 20 of module MC_term>
+/\ messages = <<>>
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Leader)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2)
+/\ counters = [ timeout |-> 2,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 2,
+  duplicate |-> 0,
+  snapshot |-> 1,
+  broadcast |-> 3 ]
+/\ step = 20
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 1)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 2 @@ s2 :> 1 @@ s3 :> 2)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 1 @@ s2 :> 3 @@ s3 :> 3) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {s1, s3})
+/\ votedFor = (s1 :> s3 @@ s2 :> s2 @@ s3 :> s3)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+22: <TraceNext line 142, col 8 to line 144, col 20 of module MC_term>
+/\ messages = ( [ mtype |-> InstallSnapshotRequest,
+    msource |-> s3,
+    mdest |-> s1,
+    mterm |-> 2,
+    msnapshotLastIdx |-> 2,
+    msnapshotLastTerm |-> 1 ] :>
+      1 )
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Leader)
+/\ lastApplied = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2)
+/\ counters = [ timeout |-> 2,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 2,
+  duplicate |-> 0,
+  snapshot |-> 1,
+  broadcast |-> 3 ]
+/\ step = 21
+/\ commitIndex = (s1 :> 0 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 0 @@ s2 :> 0 @@ s3 :> 1)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 2 @@ s2 :> 1 @@ s3 :> 2)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 1 @@ s2 :> 3 @@ s3 :> 3) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {s1, s3})
+/\ votedFor = (s1 :> s3 @@ s2 :> s2 @@ s3 :> s3)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+23: <TraceNext line 145, col 8 to line 152, col 20 of module MC_term>
+/\ messages = <<>>
+/\ matchIndex = ( s1 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) @@
+  s2 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 2) @@
+  s3 :> (s1 :> 0 @@ s2 :> 0 @@ s3 :> 0) )
+/\ log = ( s1 :> <<>> @@
+  s2 :> <<[term |-> 1, value |-> v1], [term |-> 1, value |-> v1]>> @@
+  s3 :> <<>> )
+/\ state = (s1 :> Follower @@ s2 :> Leader @@ s3 :> Leader)
+/\ lastApplied = (s1 :> 2 @@ s2 :> 0 @@ s3 :> 0)
+/\ snapshotLastIdx = (s1 :> 2 @@ s2 :> 0 @@ s3 :> 2)
+/\ counters = [ timeout |-> 2,
+  request |-> 2,
+  crash |-> 0,
+  lose |-> 2,
+  duplicate |-> 0,
+  snapshot |-> 1,
+  broadcast |-> 3 ]
+/\ step = 22
+/\ commitIndex = (s1 :> 2 @@ s2 :> 2 @@ s3 :> 2)
+/\ snapshotLastTerm = (s1 :> 1 @@ s2 :> 0 @@ s3 :> 1)
+/\ crashed = (s1 :> FALSE @@ s2 :> FALSE @@ s3 :> FALSE)
+/\ currentTerm = (s1 :> 1 @@ s2 :> 1 @@ s3 :> 2)
+/\ nextIndex = ( s1 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 1) @@
+  s2 :> (s1 :> 1 @@ s2 :> 1 @@ s3 :> 3) @@
+  s3 :> (s1 :> 1 @@ s2 :> 3 @@ s3 :> 3) )
+/\ votesGranted = (s1 :> {} @@ s2 :> {s2, s3} @@ s3 :> {s1, s3})
+/\ votedFor = (s1 :> Nil @@ s2 :> s2 @@ s3 :> s3)
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(23) at 2026-10-29 21:49:25: 23 states generated (1,744 s/min), 23 distinct states found (1,744 ds/min), 0 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+23 states generated, 23 distinct states found, 0 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 23.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 792ms at (2026-10-29 21:49:25)
+@!@!@ENDMSG 2186 @!@!@
+EXIT:13
