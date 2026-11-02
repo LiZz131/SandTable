@@ -213,7 +213,8 @@ void TcpNetwork::add_monitor_fd(int fd) const {
 
 void TcpNetwork::enqueue_messages_array(const Msg &msg) {
     messages_array.push_back(msg);
-    // cerr_detail << "Enqueue " << messages_array.size() << " fd: " << *msg.fd << endl;
+    cerr_detail << "Capture seq " << messages_array.size()
+                << " bytes " << msg.size << endl;
 }
 
 void TcpNetwork::do_receive(int fd) {
@@ -792,7 +793,70 @@ bool TcpNetwork::deliver(const string &from, const string &to, bool all, unsigne
 }
 
 bool TcpNetwork::deliver_unordered(const string &from, const string &to, unsigned seq) {
+    if (dropped_seqs.count(seq)) {
+        cerr_warning << "deliver-unordered seq " << seq << " was dropped" << endl;
+        return false;
+    }
     return deliver(from, to, false, seq);
+}
+
+bool TcpNetwork::find_channel(const string &from, const string &to, channel_t *out) {
+    channel_t channel{}, channel2{};
+    channel.first = channel2.first = configFile.get_node_addr(from);
+    channel.second = channel2.second = configFile.get_node_addr(to);
+    channel2.first.sin_port = channel2.second.sin_port;
+    channel2.second.sin_port = 0;
+    channel2.half_duplex_reverse_direction = true;
+    if (!channel.ok())
+        return false;
+    if (network.find(channel) != network.end()) {
+        *out = channel;
+        return true;
+    }
+    if (is_half_duplex && channel2.ok() && network.find(channel2) != network.end()) {
+        *out = channel2;
+        return true;
+    }
+    return false;
+}
+
+bool TcpNetwork::drop_unordered(const string &from, const string &to, unsigned seq) {
+    if (seq == 0 || seq > messages_array.size() || dropped_seqs.count(seq)) {
+        cerr_warning << "drop-unordered bad seq " << seq << endl;
+        return false;
+    }
+    channel_t channel{};
+    if (!find_channel(from, to, &channel)) {
+        cerr_warning << "drop-unordered cannot find channel" << endl;
+        return false;
+    }
+    auto it = network.find(channel);
+    Msg tmp;
+    if (!it->second.msgs.try_dequeue(tmp)) {
+        cerr_warning << "drop-unordered empty channel" << endl;
+        return false;
+    }
+    dropped_seqs.insert(seq);
+    return true;
+}
+
+bool TcpNetwork::duplicate_unordered(const string &from, const string &to, unsigned seq) {
+    if (seq == 0 || seq > messages_array.size()) {
+        cerr_warning << "duplicate-unordered bad seq " << seq << endl;
+        return false;
+    }
+    channel_t channel{};
+    if (!find_channel(from, to, &channel)) {
+        cerr_warning << "duplicate-unordered cannot find channel" << endl;
+        return false;
+    }
+    auto it = network.find(channel);
+    Msg copy(messages_array[seq - 1]);
+    it->second.msgs.enqueue(Msg(messages_array[seq - 1]));
+    messages_array.push_back(std::move(copy));
+    cerr_detail << "Capture seq " << messages_array.size()
+                << " duplicate of " << seq << endl;
+    return true;
 }
 
 void TcpNetwork::wait_recover() {

@@ -163,6 +163,16 @@ void Command::run_read_cmd() {
             if (!net->deliver_unordered(c.get_arg(1), c.get_arg(2), std::atoi(c.get_arg(3).c_str()))) {
                 c.prompt_invalid("deliver-unordered failed");
             }
+        } else if (c.get_cmd() == "drop-unordered") {  // tcp only
+            CHECK_ARGS(4);
+            if (!net->drop_unordered(c.get_arg(1), c.get_arg(2), std::atoi(c.get_arg(3).c_str()))) {
+                c.prompt_invalid("drop-unordered failed");
+            }
+        } else if (c.get_cmd() == "duplicate-unordered") {  // tcp only
+            CHECK_ARGS(4);
+            if (!net->duplicate_unordered(c.get_arg(1), c.get_arg(2), std::atoi(c.get_arg(3).c_str()))) {
+                c.prompt_invalid("duplicate-unordered failed");
+            }
         } else if(c.get_cmd() == "send") {
             CHECK_ARGS(4);
             char* data;

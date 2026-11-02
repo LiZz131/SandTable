@@ -90,6 +90,7 @@ private:
     bool is_half_duplex;
     list<pair<AcceptData, channel_status_t>> pending_connections;
     vector<Msg> messages_array; // backward compatibility, for random access (allow_msg_unordered)
+    set<unsigned> dropped_seqs;
 private:
     void set_recv_timeout(int fd);
     void set_conn_retries(int fd);
@@ -110,6 +111,7 @@ private:
     static bool check_connection_is_active(int fd);
     string convert_cmd_check_has_recv_queue(const string &node, const string &c);
     void enqueue_messages_array(const Msg &msg);
+    bool find_channel(const string &from, const string &to, channel_t *out);
 public:
     static string channel_to_string(const channel_t &c);
     void partition(const string &node, bool clear_msg=false, bool is_recover=false);
@@ -121,6 +123,8 @@ public:
     void wait_recover();
     bool deliver(const string &from, const string &to, bool all, unsigned seq=0);
     bool deliver_unordered(const string &from, const string &to, unsigned seq); // backward compatibility
+    bool drop_unordered(const string &from, const string &to, unsigned seq);
+    bool duplicate_unordered(const string &from, const string &to, unsigned seq);
     void print_status();
     string get_status_cache();
     void deliver_all(int least_count=0);
