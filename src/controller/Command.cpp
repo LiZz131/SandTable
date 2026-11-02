@@ -287,6 +287,10 @@ void Command::run_read_cmd() {
                 }
             } else if (c.get_arg(1) == "variable") {  // "variable"
                 string code_var = remote_control->get_cache_cmp_data();
+                cerr << "TRACE " << compare_cache_name
+                     << " node=" << last_exec_node
+                     << " code=" << code_var
+                     << " model=" << model_var << endl;
                 if (FLAGS_state_no_fail_empty && code_var == "(empty)") {
                     cerr_warning << "Code variable \"" << compare_cache_name << "\" is empty" << endl;
                 }
